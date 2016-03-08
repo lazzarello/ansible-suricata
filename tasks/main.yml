@@ -89,14 +89,14 @@
     - deploy-cronjobs
 
 
-- cron: name="Add cronjob at reboot - disbale network offload"
+- cron: name="Add cronjob at reboot - disable network offload"
         special_time=reboot
         job="/opt/disable_network_offload.sh"
   tags:
     - deploy-cronjobs
 
 
-- cron: name="Add cronjob: Daily - Update oinkmaster ruleset"
+- cron: name="Add cronjob - Daily - Update oinkmaster ruleset"
         special_time=daily
         job=/opt/update_oinkmaster_ruleset.sh
   tags:
