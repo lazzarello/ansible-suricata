@@ -85,7 +85,7 @@ outputs:
   # Extensible Event Format (nicknamed EVE) event log in JSON format
   - eve-log:
       enabled: yes
-      type: file #file|syslog|unix_dgram|unix_stream
+      type: syslog #file|syslog|unix_dgram|unix_stream
       filename: eve.json
       # the following are valid when type: syslog above
       #identity: "suricata"
@@ -96,17 +96,16 @@ outputs:
         - alert
         - http:
             extended: yes     # enable this for extended logging information
-            # custom allows additional http fields to be included in eve-log
-            # the example below adds three additional fields when uncommented
-            #custom: [Accept-Encoding, Accept-Language, Authorization]
         - dns
         - tls:
             extended: yes     # enable this for extended logging information
         - files:
-            force-magic: no   # force logging magic on all logged files
-            force-md5: no     # force logging of md5 checksums
+            force-magic: yes   # force logging magic on all logged files
+            force-md5: yes     # force logging of md5 checksums
         #- drop
         - ssh
+        - smtp
+        - flow
 
   # alert output for use with Barnyard2
   - unified2-alert:
@@ -134,7 +133,7 @@ outputs:
         # Header name were the actual IP address will be reported, if more than
         # one IP address is present, the last IP address will be the one taken
         # into consideration.
-        header: X-Forwarded-For 
+        header: X-Forwarded-For
 
   # a line based log of HTTP requests (no alerts)
   - http-log:
@@ -1322,4 +1321,4 @@ napatech:
 # Includes.  Files included here will be handled as if they were
 # inlined in this configuration file.
 #include: include1.yaml
-#include: include2.yaml 
+#include: include2.yaml
