@@ -13,7 +13,6 @@
   command: 'mkdir -p {{ item }}'
   with_items:
     - "{{ suricata_log_dir }}"
-    - "{{ suricata_log_dir }}"
     - "{{ suricata_log_dir_certs }}"
     - "{{ suricata_rules_dir }}"
   tags:
