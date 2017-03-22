@@ -88,9 +88,9 @@ outputs:
       type: syslog #file|syslog|unix_dgram|unix_stream
       filename: eve.json
       # the following are valid when type: syslog above
-      #identity: "suricata"
-      #facility: local5
-      #level: Info ## possible levels: Emergency, Alert, Critical,
+      identity: "suricata"
+      facility: local5
+      level: Info ## possible levels: Emergency, Alert, Critical,
                    ## Error, Warning, Notice, Info, Debug
       types:
         - alert
